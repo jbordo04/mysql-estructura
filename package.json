@@ -13,10 +13,14 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.10",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
-    "@libsql/client": "^0.4.2"
+    "@libsql/client": "^0.4.2",
+    "nodemon": "^3.0.3"
   }
 }
