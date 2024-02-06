@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon src/index.ts",
+    "dev2": "nodemon src/index2.ts",
     "eslint": "eslint \"./**/*.{js,ts}\""
   },
   "author": "",
