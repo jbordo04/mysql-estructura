@@ -19,11 +19,12 @@ drop table if exists employee;
 
 -- CREATE TABLES --
 CREATE TABLE proveidor  (
-   id integer PRIMARY KEY,
+   id integer PRIMARY KEY AUTO_INCREMENT,
+   name text not null,
    adress text NOT NULL,  
    telephone text NOT NULL,
-   fax integer,
-   NIF integer NOT NULL   
+   fax text,
+   NIF text NOT NULL   
 );
 
 CREATE TABLE montura  (
@@ -48,7 +49,7 @@ CREATE TABLE customer  (
    id integer PRIMARY KEY AUTO_INCREMENT,
    name  text NOT NULL,
    adress text NOT NULL,
-   telephone text,
+   telephone varchar(255) not null,
    email text NOT NULL,
    date date,
    idCliente_Recomended integer,
@@ -74,15 +75,18 @@ CREATE TABLE ventas (
    foreign key (idGafas) references gafas (id)
 );
 
-INSERT INTO proveidor (adress, telephone, fax, NIF) values 
+INSERT INTO proveidor (name, adress, telephone, fax, NIF) values 
 (
-   'Ave.Meridiana 57', '6734522345', '4437654', 'X4352345T'
+   'Alferez, S.L.','Ave.Meridiana 57', '6734522345', '4437654', 'X4352345T'
 ),
 (
-   'Ave.Roma 234', '345634563', '4437654', 'F23423R'
+   'Mmapras, S.L.','Ave.Roma 234', '345634563', '4437654', 'F23423R'
 ),
 (
-   'Ave.Gipuzcoia 23', '2345522345', '4437654', 'T234234T'
+   'Hmos Lugo, S.L.','Ave.Gipuzcoia 23', '2345522345', '4437654', 'T234234T'
+),
+(
+   'Berthon, S.L','Str. Muckenfield 89', '781234123', '43457654', 'P22342334T'
 );
 
 INSERT INTO montura (name) values ('flotant'),('pasta'),('metalica');
@@ -95,11 +99,20 @@ INSERT INTO gafas ( brand, graduation, idMontura, colourJoint, colorGlass, idPro
    'DG', 1, 2, 'verde', 'negro', 2, 80.9
 ),
 (
-   'chichin', 4.5, 3, 'rojo', 'marron', 1, 39.9
+   'chichin', 4.5, 3, 'rojo', 'marron', 3, 39.9
+),
+(
+   'Lacoste', 2.5, 2, 'green', 'balck', 1, 19.9
+),
+(
+   'Vizeroy', 3.5, 1, 'blue', 'white', 3, 49.9
+),
+(
+   'Polaroy', 0.5, 3, 'black', 'black', 4, 89.9
 );
 
 
-INSERT INTO employee (name, apellido, turno) values 
+INSERT INTO employee (nombre, apellido, turno) values 
 (
    'joan', 'bordonaba', 'tarde'
 ),
@@ -120,3 +133,79 @@ INSERT INTO customer (name, adress, telephone, email, date, idCliente_Recomended
 (
    'Ana', 'burgos 45 3-1', '6234561345', 'ana@#sdfasdf.com', now(), null
 );
+
+INSERT INTO ventas(idCustomer ,idEmployee , idGafas , data) values 
+(
+   1, 2,3, '2023-01-08'
+),
+(
+   3, 1,3, '2023-04-08'
+),
+(
+   3, 2,2, '2023-03-08'
+),
+(
+   1, 1,3, '2023-05-08'
+),
+(
+   1, 3,2, '2023-09-08'
+),
+(
+   2, 1,5, '2023-06-08'
+),
+(
+   3, 2,2, '2023-05-08'
+),
+(
+   1, 2,5, '2023-12-08'
+),
+(
+   3, 1,1, '2023-02-08'
+),
+(
+   3, 2,2, '2023-11-08'
+),
+(
+   1, 1,1, '2023-04-08'
+),
+(
+   1, 3,4, '2023-05-08'
+),
+(
+   2, 1,5, '2023-12-08'
+),
+(
+   3, 2,4, '2023-07-08'
+);
+
+
+-- LISTA TOTAL DE COMPRAS CUSTOMER --
+SELECT COUNT(*) as 'Ventas Totales', c.name  
+FROM ventas v 
+INNER JOIN customer c on v.idCustomer = c.id
+INNER JOIN gafas g on g.id = v.idGafas
+  where c.id = 1;
+
+SELECT g.brand, v.data, c.name  
+FROM ventas v 
+INNER JOIN customer c on v.idCustomer = c.id
+INNER JOIN gafas g on g.id = v.idGafas
+  where c.id = 1;
+
+-- LISTA DE DIFF GLASSE SOLD FOR YEAR PER EMPLOYEE --
+SELECT v.idCustomer, concat(e.nombre, ' ', e.apellido) as 'Employee', g.brand, v.data 
+FROM ventas v INNER JOIN employee e on v.idEmployee = e.id INNER JOIN gafas g ON v.idGafas = g.id 
+where e.id = 1;
+
+-- DIFF SUPPLIERS MAKING SELLING GLASSES
+
+SELECT COUNT(*) as 'num Gafas', p.name FROM gafas g
+INNER JOIN proveidor p ON p.id = g.idProveidor
+INNER JOIN ventas v ON v.idGafas = g.id
+ORDER BY num. Gafas
+LIMIT 5;
+-- SELECT COUNT(*) as 'num Gafas', g.brand, p.name, v.data FROM gafas g
+-- INNER JOIN proveidor p ON p.id = g.idProveidor
+-- INNER JOIN ventas v ON v.idGafas = g.id
+-- ORDER BY num. Gafas
+-- LIMIT 5;
