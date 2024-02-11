@@ -75,6 +75,7 @@ CREATE TABLE ventas (
    foreign key (idGafas) references gafas (id)
 );
 
+-- INSERT DATA TO MOCK DB --
 INSERT INTO proveidor (name, adress, telephone, fax, NIF) values 
 (
    'Alferez, S.L.','Ave.Meridiana 57', '6734522345', '4437654', 'X4352345T'
@@ -180,32 +181,29 @@ INSERT INTO ventas(idCustomer ,idEmployee , idGafas , data) values
 
 
 -- LISTA TOTAL DE COMPRAS CUSTOMER --
-SELECT COUNT(*) as 'Ventas Totales', c.name  
+SELECT COUNT(*) as 'Ventas Totales', c.name as customer 
 FROM ventas v 
 INNER JOIN customer c on v.idCustomer = c.id
 INNER JOIN gafas g on g.id = v.idGafas
   where c.id = 1;
 
-SELECT g.brand, v.data, c.name  
+SELECT g.brand, v.data, c.name as customer 
 FROM ventas v 
 INNER JOIN customer c on v.idCustomer = c.id
 INNER JOIN gafas g on g.id = v.idGafas
   where c.id = 1;
 
 -- LISTA DE DIFF GLASSE SOLD FOR YEAR PER EMPLOYEE --
-SELECT v.idCustomer, concat(e.nombre, ' ', e.apellido) as 'Employee', g.brand, v.data 
-FROM ventas v INNER JOIN employee e on v.idEmployee = e.id INNER JOIN gafas g ON v.idGafas = g.id 
+SELECT c.name as costumer, concat(e.nombre, ' ', e.apellido) as 'Employee', g.brand, v.data as date
+FROM ventas v 
+INNER JOIN employee e on v.idEmployee = e.id 
+INNER JOIN gafas g ON v.idGafas = g.id 
+INNER JOIN customer c on c.id = v.idCustomer
 where e.id = 1;
 
 -- DIFF SUPPLIERS MAKING SELLING GLASSES
-
-SELECT COUNT(*) as 'num Gafas', p.name FROM gafas g
+SELECT p.name as proveedor, COUNT(g.id) AS total_gafas FROM gafas g
 INNER JOIN proveidor p ON p.id = g.idProveidor
-INNER JOIN ventas v ON v.idGafas = g.id
-ORDER BY num. Gafas
-LIMIT 5;
--- SELECT COUNT(*) as 'num Gafas', g.brand, p.name, v.data FROM gafas g
--- INNER JOIN proveidor p ON p.id = g.idProveidor
--- INNER JOIN ventas v ON v.idGafas = g.id
--- ORDER BY num. Gafas
--- LIMIT 5;
+GROUP BY p.name
+ORDER BY total_gafas DESC;
+
