@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "dev": "nodemon src/index.ts",
-    "dev2": "nodemon src/index2.ts",
+    "inject": "ts-node src/index.ts",
     "eslint": "eslint \"./**/*.{js,ts}\""
   },
   "author": "",

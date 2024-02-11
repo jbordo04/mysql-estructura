@@ -38,7 +38,7 @@ CREATE TABLE products (
   name varchar(255) NOT NULL,
   description varchar(255) NOT NULL,
   image text NOT NULL,
-  price integer NOT NULL
+  price decimal(5,2) NOT NULL
 );
 
 CREATE table store (
@@ -74,7 +74,7 @@ CREATE TABLE commands (
   idTypeOrder integer NOT NULL,
   quantity integer NOT NULL,
   idProducts integer not null,
-  price integer NOT NULL,
+  price decimal(5,2) NOT NULL,
   idStore integer not NULL,
   foreign key (idEmployee) references employees (id),
   foreign key (idCustomer) references customer (id),

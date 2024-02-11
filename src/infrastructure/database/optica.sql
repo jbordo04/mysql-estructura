@@ -40,7 +40,7 @@ CREATE TABLE gafas  (
    colourJoint text NOT NULL,
    colorGlass text NOT NULL,
    idProveidor integer NOT NULL,
-   price integer not null,
+   price decimal(5,2) not null,
    foreign key (idProveidor) references proveidor (id),
    foreign key (idMontura) references montura (id)
 );
