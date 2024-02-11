@@ -77,107 +77,47 @@ CREATE TABLE ventas (
 
 -- INSERT DATA TO MOCK DB --
 INSERT INTO proveidor (name, adress, telephone, fax, NIF) values 
-(
-   'Alferez, S.L.','Ave.Meridiana 57', '6734522345', '4437654', 'X4352345T'
-),
-(
-   'Mmapras, S.L.','Ave.Roma 234', '345634563', '4437654', 'F23423R'
-),
-(
-   'Hmos Lugo, S.L.','Ave.Gipuzcoia 23', '2345522345', '4437654', 'T234234T'
-),
-(
-   'Berthon, S.L','Str. Muckenfield 89', '781234123', '43457654', 'P22342334T'
-);
+('Alferez, S.L.','Ave.Meridiana 57', '6734522345', '4437654', 'X4352345T'),
+('Mmapras, S.L.','Ave.Roma 234', '345634563', '4437654', 'F23423R'),
+('Hmos Lugo, S.L.','Ave.Gipuzcoia 23', '2345522345', '4437654', 'T234234T'),
+('Berthon, S.L','Str. Muckenfield 89', '781234123', '43457654', 'P22342334T');
 
 INSERT INTO montura (name) values ('flotant'),('pasta'),('metalica');
 
 INSERT INTO gafas ( brand, graduation, idMontura, colourJoint, colorGlass, idProveidor, price) values 
-(
-   'Rayban', 2.3, 1, 'amarillo', 'verde', 1, 60.5
-),
-(
-   'DG', 1, 2, 'verde', 'negro', 2, 80.9
-),
-(
-   'chichin', 4.5, 3, 'rojo', 'marron', 3, 39.9
-),
-(
-   'Lacoste', 2.5, 2, 'green', 'balck', 1, 19.9
-),
-(
-   'Vizeroy', 3.5, 1, 'blue', 'white', 3, 49.9
-),
-(
-   'Polaroy', 0.5, 3, 'black', 'black', 4, 89.9
-);
+('Rayban', 2.3, 1, 'amarillo', 'verde', 1, 60.5),
+('DG', 1, 2, 'verde', 'negro', 2, 80.9),
+('chichin', 4.5, 3, 'rojo', 'marron', 3, 39.9),
+('Lacoste', 2.5, 2, 'green', 'balck', 1, 19.9),
+('Vizeroy', 3.5, 1, 'blue', 'white', 3, 49.9),
+('Polaroy', 0.5, 3, 'black', 'black', 4, 89.9);
 
 
 INSERT INTO employee (nombre, apellido, turno) values 
-(
-   'joan', 'bordonaba', 'tarde'
-),
-(
-   'Mireia', 'Gonzales', 'maana'
-),
-(
-   'Floren', 'Straush', 'maana'
-);
+('joan', 'bordonaba', 'tarde'),
+('Mireia', 'Gonzales', 'maana'),
+('Floren', 'Straush', 'maana');
 
 INSERT INTO customer (name, adress, telephone, email, date, idCliente_Recomended) values 
-(
-   'Roberto', 'Boreal 6 1-1', '680566146', 'joan@#sdfasdf.com', now(), null
-),
-(
-   'Maria', 'roma 7 4-2', '4563472342', 'maria@#sdfasdf.com', now(), null
-),
-(
-   'Ana', 'burgos 45 3-1', '6234561345', 'ana@#sdfasdf.com', now(), null
-);
+('Roberto', 'Boreal 6 1-1', '680566146', 'joan@#sdfasdf.com', now(), null),
+('Maria', 'roma 7 4-2', '4563472342', 'maria@#sdfasdf.com', now(), null),
+('Ana', 'burgos 45 3-1', '6234561345', 'ana@#sdfasdf.com', now(), null);
 
 INSERT INTO ventas(idCustomer ,idEmployee , idGafas , data) values 
-(
-   1, 2,3, '2023-01-08'
-),
-(
-   3, 1,3, '2023-04-08'
-),
-(
-   3, 2,2, '2023-03-08'
-),
-(
-   1, 1,3, '2023-05-08'
-),
-(
-   1, 3,2, '2023-09-08'
-),
-(
-   2, 1,5, '2023-06-08'
-),
-(
-   3, 2,2, '2023-05-08'
-),
-(
-   1, 2,5, '2023-12-08'
-),
-(
-   3, 1,1, '2023-02-08'
-),
-(
-   3, 2,2, '2023-11-08'
-),
-(
-   1, 1,1, '2023-04-08'
-),
-(
-   1, 3,4, '2023-05-08'
-),
-(
-   2, 1,5, '2023-12-08'
-),
-(
-   3, 2,4, '2023-07-08'
-);
+(1, 2,3, '2023-01-08'),
+(3, 1,3, '2023-04-08'),
+(3, 2,2, '2023-03-08'),
+(1, 1,3, '2023-05-08'),
+(1, 3,2, '2023-09-08'),
+(2, 1,5, '2023-06-08'),
+(3, 2,2, '2023-05-08'),
+(1, 2,5, '2023-12-08'),
+(3, 1,1, '2023-02-08'),
+(3, 2,2, '2023-11-08'),
+(1, 1,1, '2023-04-08'),
+(1, 3,4, '2023-05-08'),
+(2, 1,5, '2023-12-08'),
+(3, 2,4, '2023-07-08');
 
 
 -- LISTA TOTAL DE COMPRAS CUSTOMER --

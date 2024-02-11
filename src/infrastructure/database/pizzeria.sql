@@ -114,15 +114,16 @@ INSERT INTO customer (name, surname,  address,  CP, city, province, telephone) v
 ('Juliana', 'mala', 'bac de roda 69 7-1', 08002, 'hospitalet', 'barcelona', '63423423'),
 ('Octavi', 'hernandez', 'av. mistral 445 8-1', 08030, 'barcelona', 'barcelona', '68056621347');
 
-INSERT INTO typeOrder (name) values ('Delivery'), ('Takeaway');
+INSERT INTO typeOrder (name) values 
+('Delivery'), 
+('Takeaway');
 
 INSERT INTO products (name, description, image, price) values 
 ('drink', 'refresco que sirve para saciar la sed con diferentes sabores', 'www.url.com/img1.jpg', 4.5),
 ('pizza', 'Bread with some ingredients that make a magic savour', 'www.url.com/img2.jpg', 8.5),
 ('hamburguer', 'Piece of best breed', 'www.url.com/img3.jpg', 5.5);
 
-INSERT INTO store (address, CP, city, province) 
-VALUES 
+INSERT INTO store (address, CP, city, province) VALUES 
 ('146 borrell St', 08015, 'Barcelona', 'Barcelona'),
 ('146 Roma Av.', 08040, 'Barcelona', 'Barcelona'),
 ('16 MArai del Mar St', 08073, 'Hospitalet', 'Barcelona'),
@@ -130,13 +131,11 @@ VALUES
 ('16 Catalunya pl.', 08643, 'Terrasa', 'Barcelona'),
 ('16 ramon Av.', 08647, 'Terrasa', 'Barcelona');
 
-INSERT INTO typeEmployees (id, name) 
-VALUES 
+INSERT INTO typeEmployees (id, name) VALUES 
 (1, 'Delivering'),
 (2, 'Cooking');
 
-INSERT INTO employees (name, surname, NIF, telephone, idStore, idTypeEmployee) 
-VALUES 
+INSERT INTO employees (name, surname, NIF, telephone, idStore, idTypeEmployee) VALUES 
 ('Guillermo', 'Rodriguez', '4645678A', '680213452', 3, 1),
 ('Sara', 'Amparo', '47654321B', '62345355', 1, 2),
 ('Albert', 'Jimenez', '48765432C', '69345734', 2, 1),
@@ -166,14 +165,12 @@ INSERT INTO commands (idEmployee, idCustomer, date, idTypeOrder, quantity, idPro
 (3,5, '2023-01-11 22:32:54', 2,1,2, 15.5, 3),
 (4,2, '2023-08-11 20:32:54', 2,3,1, 29.5, 5);
 
-INSERT INTO category (name) 
-VALUES 
+INSERT INTO category (name) VALUES 
 ('Chesse'),
 ('Fruits'),
 ('Offs');
 
-INSERT INTO pizza (idProduct, idCategory) 
-VALUES 
+INSERT INTO pizza (idProduct, idCategory) VALUES 
 (2, 1),
 (2, 2),
 (2, 3),
